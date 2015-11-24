@@ -6,7 +6,8 @@ public class Map {
 	
 	List<Stop> pattern;
 	
-	String axis;
+	//the chosen area in Lyon
+	String axis; 
 
 	public Map(List<Stop> pattern, String axis) {
 		super();
@@ -30,6 +31,17 @@ public class Map {
 		this.axis = axis;
 	}
 	
+	public Stop getStop(String stopName)
+	{
+		for(Stop stop: pattern)
+		{
+			if(stop.getName().equals(stopName))
+			{
+				return stop;
+			}
+		}
+		return null;
+	}
 	
 
 }

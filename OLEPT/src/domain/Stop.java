@@ -8,10 +8,10 @@ public class Stop {
 	
 	private int cost;
 	
-	private List<TransportLine> availableTransports;
+	private List<Road> roads;
 
-	public Stop(String name, int cost) {
-		super();
+	public Stop(String name, int cost, List<Road> roads) {
+		this.roads = roads;
 		this.name = name;
 		this.cost = cost;
 	}
@@ -31,6 +31,15 @@ public class Stop {
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
+
+	public List<Road> getRoads() {
+		return roads;
+	}
+
+	public void setRoads(List<Road> roads) {
+		this.roads = roads;
+	}
+	
 	
 	
 }
