@@ -6,6 +6,7 @@ public class Road {
 	
 	private int cost;
 	
+	// TODO not needed I think
 	private Stop fromStop;
 	
 	private Stop toStop;
