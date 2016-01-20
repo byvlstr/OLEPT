@@ -1,22 +1,22 @@
 package domain;
 
-import java.util.List;
+import java.util.Stack;
 
 public class Itinerary {
 	
-	List<Stop> listStops;
+	Stack<String> stackStops;
 
-	public Itinerary(List<Stop> listStops) {
+	public Itinerary(Stack<String> stackStops) {
 		super();
-		this.listStops = listStops;
+		this.stackStops = stackStops;
 	}
 
-	public List<Stop> getListStops() {
-		return listStops;
+	public Stack<String> getStackStops() {
+		return stackStops;
 	}
 
-	public void setListStops(List<Stop> listStops) {
-		this.listStops = listStops;
+	public void setStackStops(Stack<String> stackStops) {
+		this.stackStops = stackStops;
 	}
 	
 	

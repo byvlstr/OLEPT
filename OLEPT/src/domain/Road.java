@@ -6,18 +6,14 @@ public class Road {
 	
 	private int cost;
 	
-	// TODO not needed I think
-	private Stop fromStop;
+	private String toStop;
 	
-	private Stop toStop;
-	
-	private List<TransportLine> availableTransports;
+	private TransportLine availableTransport;
 
-	public Road(int cost, Stop fromStop, Stop toStop, List<TransportLine> availableTransports) {
+	public Road(int cost, String toStop, TransportLine availableTransport) {
 		this.cost = cost;
-		this.fromStop = fromStop;
 		this.toStop = toStop;
-		this.availableTransports = availableTransports;
+		this.availableTransport = availableTransport;
 	}
 
 	public int getCost() {
@@ -28,28 +24,20 @@ public class Road {
 		this.cost = cost;
 	}
 
-	public Stop getFromStop() {
-		return fromStop;
-	}
-
-	public void setFromStop(Stop fromStop) {
-		this.fromStop = fromStop;
-	}
-
-	public Stop getToStop() {
+	public String getToStop() {
 		return toStop;
 	}
 
-	public void setToStop(Stop toStop) {
+	public void setToStop(String toStop) {
 		this.toStop = toStop;
 	}
 
-	public List<TransportLine> getAvailableTransports() {
-		return availableTransports;
+	public TransportLine getAvailableTransport() {
+		return availableTransport;
 	}
 
-	public void setAvailableTransports(List<TransportLine> availableTransports) {
-		this.availableTransports = availableTransports;
+	public void setAvailableTransport(TransportLine availableTransport) {
+		this.availableTransport = availableTransport;
 	}
 	
 	

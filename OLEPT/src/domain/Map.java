@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Map {
@@ -8,6 +9,11 @@ public class Map {
 	
 	//the chosen area in Lyon
 	String axis; 
+	
+	public Map(){
+		pattern = new LinkedList<Stop>();
+		axis="";
+	}
 
 	public Map(List<Stop> pattern, String axis) {
 		super();

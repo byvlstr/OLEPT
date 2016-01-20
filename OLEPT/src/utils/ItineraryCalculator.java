@@ -1,7 +1,9 @@
 package utils;
 
 import java.util.HashMap;
-import java.util.Vector;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Stack;
 
 import domain.Itinerary;
 import domain.Map;
@@ -11,68 +13,99 @@ import domain.Stop;
 public class ItineraryCalculator {
 	
 	private static final Integer INFINITY = 10000;
-	private static final int WHITE = 0;
-	private static final int GREY = 1;
-	private static final int BLACK = 2;
 
 	
-	private java.util.Map<String, Integer> costsPerRoad;
-	private java.util.Map<String, String> stopOrderMap;
-	private java.util.Map<String, Integer> colourPerStopMap;
-	private java.util.Map<String, Integer> costsToStop;
+	private java.util.Map<String, String> previousStopInPath;
+	private java.util.Map<String, Integer> costToStop;
 
 	public ItineraryCalculator(Map map) {
-		costsPerRoad = null; //=XMLReader.x()
-		stopOrderMap = new HashMap<String, String>();
-		colourPerStopMap = new HashMap<String, Integer>();
-		costsToStop = new HashMap<String, Integer>();
+		previousStopInPath = new HashMap<String, String>();
+		costToStop = new HashMap<String, Integer>();
 	}
-
-	public Itinerary computeDijkstraShortestPath(Map map, Stop start)
+	
+	/**
+	 * Wiki Dijkstra pseudo code references:
+	 * dist = costToStop
+	 * Graph = map.pattern
+	 * prev = previousStopInPath
+	 * Q = unvisitedNodes
+	 * 
+	 * @param map
+	 * @param start
+	 * @return itinerary
+	 * @throws Exception 
+	 */
+	public Itinerary computeDijkstraShortestPath(Map map, String start, String goal) throws Exception
 	{
-		for(Stop stop: map.getPattern())
-		{
-			costsToStop.put(stop.getName(), INFINITY);
-			stopOrderMap.put(stop.getName(), null);
-			colourPerStopMap.put(stop.getName(), WHITE);
+		Set<Stop> unvisitedNodes = new HashSet<Stop>();
+		for(Stop stop : map.getPattern()){
+			costToStop.put(stop.getName(), INFINITY);
+			previousStopInPath.put(stop.getName(), null);
+			unvisitedNodes.add(stop);
+			//distance from start stop to itself
+			costToStop.put(start, 0);
 		}
-		costsToStop.put(start.getName(), 0);
-		colourPerStopMap.put(start.getName(), GREY);
-		while(colourPerStopMap.size() != 0){
-			String s = findMinimalCostStop();
-			Stop stop = map.getStop(s);
-			for(Road road : stop.getRoads()){
-				Stop nextStop = road.getToStop();
-				if(colourPerStopMap.get(stop.getName()) != BLACK){
-					release(stop, nextStop);
-					if(colourPerStopMap.get(stop.getName()) == WHITE){
-						colourPerStopMap.put(stop.getName(), GREY);
-					}
+		while(!unvisitedNodes.isEmpty()){
+			String minStop = findMinimalCostStop(unvisitedNodes);
+			if(minStop == null) throw new Exception("Stop costs may be wrong...");
+			Stop minimalCostStop = map.getStop(minStop);
+			
+			if(minimalCostStop.getName().equals(goal)) break;
+			if(unvisitedNodes.remove(minimalCostStop)){
+				
+				for(Road road: minimalCostStop.getRoads()){
+					Stop neighbour = map.getStop(road.getToStop());
+					int alternative = road.getCost() + costToStop.get(minimalCostStop.getName());
+					if(alternative + minimalCostStop.getCost() < costToStop.get(neighbour.getName()) + neighbour.getCost()){
+						costToStop.put(neighbour.getName(), alternative);
+						previousStopInPath.put(neighbour.getName(), minimalCostStop.getName());
+					}					
 				}
+				
+			}else{
+				throw new Exception("Stop list may be wrong...");
 			}
 		}
-		return null;
+		Itinerary shortestPath = getShortestPath(goal);
+
+		return shortestPath;
 	}
 
-	private void release(Stop stop, Stop nextStop) {
-		int thisCost = costsPerRoad.get(stop.getName());
-		int nextCost = costsPerRoad.get(nextStop.getName());
-		if(nextCost > (thisCost + ))
-		
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 */
+	private Itinerary getShortestPath(String goal) {
+		Stack<String> stack = new Stack<String>();
+		String stop = goal;
+		System.out.println(previousStopInPath.size());
+		for(String string : previousStopInPath.keySet()){
+			System.out.println(string + " : " + previousStopInPath.get(string));
+		}
+		while(previousStopInPath.get(stop) != null){
+			//System.out.println(stop);
+			stack.push(stop);
+			stop = previousStopInPath.get(stop);
+		}
+		stack.push(stop);
+		Itinerary itinerary = new Itinerary(stack);
+		return itinerary;
 	}
 
-	private String findMinimalCostStop() {
+	/** 
+	 * 
+	 * @return minStop
+	 */
+	private String findMinimalCostStop(Set<Stop> unvisitedNodes) {
 		int minCost = INFINITY;
 		String minStop = null;
-		for(String s : colourPerStopMap.keySet()){
-			if(colourPerStopMap.get(s) == GREY){
-				if(costsToStop.get(s) < INFINITY){
-					minCost = costsPerRoad.get(s);
-					minStop = s;
+		for(Stop stop : unvisitedNodes){
+				if(costToStop.get(stop.getName()) < minCost){
+					minCost = costToStop.get(stop.getName());
+					minStop = stop.getName();
 				}
-			}
 		}
-		if(minStop == null) minStop = null;
 		return minStop;
 	}
 }

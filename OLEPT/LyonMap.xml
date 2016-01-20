@@ -1,0 +1,241 @@
+<Map axis="Hôtel de Ville Louis Pradel, Perrache, Jean Macé, Saxe-Gambetta, Charpennes">
+	
+	<Stop name="Charpennes Charles Hernu" cost="2">
+		<Road cost="1" toStop="Brotteaux">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+		<Road cost="1" toStop="Masséna">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+		<Road cost="2" toStop="Collège Bellecombe">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Collège Bellecombe" cost="1">
+		<Road cost="1" toStop="Thiers-Lafayette">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="2" toStop="Charpennes Charles Hernu">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Thiers-Lafayette" cost="1">
+		<Road cost="1" toStop="Collège Bellecombe">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="2" toStop="Gare Part-Dieu">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Gare Part-Dieu" cost="4">
+		<Road cost="2" toStop="Thiers-Lafayette">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="2" toStop="Part-Dieu-Servient">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="2" toStop="Brotteaux">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+		<Road cost="1" toStop="Place Guichard">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Brotteaux" cost="1">
+		<Road cost="1" toStop="Charpennes Charles Hernu">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+		<Road cost="2" toStop="Gare Part-Dieu">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Place Guichard" cost="1">
+		<Road cost="1" toStop="Gare Part-Dieu">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+		<Road cost="1" toStop="Saxe-Gambetta">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Saxe-Gambetta" cost="4">
+		<Road cost="1" toStop="Place Guichard">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+		<Road cost="2" toStop="Jean Macé">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+		<Road cost="1" toStop="Guillotière Gabriel Péri">
+			<TransportLine type="Underground" name="D" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Jean Macé" cost="3">
+		<Road cost="2" toStop="Saxe-Gambetta">
+			<TransportLine type="Underground" name="B" />
+		</Road>
+		<Road cost="1" toStop="Centre Berthelot">
+			<TransportLine type="Tramway" name="T2" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Centre Berthelot" cost="1">
+		<Road cost="1" toStop="Jean Macé">
+			<TransportLine type="Tramway" name="T2" />
+		</Road>
+		<Road cost="1" toStop="Perrache">
+			<TransportLine type="Tramway" name="T2" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Perrache" cost="3">
+		<Road cost="1" toStop="Ampère Victor Hugo">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+		<Road cost="1" toStop="Centre Berthelot">
+			<TransportLine type="Tramway" name="T2" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Ampère Victor Hugo" cost="1">
+		<Road cost="1" toStop="Perrache">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+		<Road cost="1" toStop="Bellecour">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Bellecour" cost="3">
+		<Road cost="1" toStop="Ampère Victor Hugo">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+		<Road cost="2" toStop="Cordeliers">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+		<Road cost="2" toStop="Guillotière Gabriel Péri">
+			<TransportLine type="Underground" name="D" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Quai Claude Bernard" cost="1">
+		<Road cost="1" toStop="Perrache">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="1" toStop="Rue de l'université">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Rue de l'université" cost="1">
+		<Road cost="1" toStop="Quai Claude Bernard">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="1" toStop="Saint-André">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Saint-André" cost="1">
+		<Road cost="1" toStop="Rue de l'université">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="1" toStop="Guillotière Gabriel Péri">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Guillotière Gabriel Péri" cost="2">
+		<Road cost="1" toStop="Saxe-Gambetta">
+			<TransportLine type="Underground" name="D" />
+		</Road>
+		<Road cost="2" toStop="Bellecour">
+			<TransportLine type="Underground" name="D" />
+		</Road>
+		<Road cost="1" toStop="Saint-André">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="1" toStop="Liberté">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Liberté" cost="1">
+		<Road cost="1" toStop="Guillotière Gabriel Péri">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="1" toStop="Saxe-Préfecture">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Saxe-Préfecture" cost="1">
+		<Road cost="1" toStop="Liberté">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="1" toStop="Palais de Justice">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Palais de Justice" cost="1">
+		<Road cost="1" toStop="Saxe-Préfecture">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="1" toStop="Part-Dieu-Servient">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Part-Dieu-Servient" cost="1">
+		<Road cost="1" toStop="Palais de Justice">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+		<Road cost="2" toStop="Gare Part-Dieu">
+			<TransportLine type="Tramway" name="T1" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Cordeliers" cost="1">
+		<Road cost="2" toStop="Bellecour">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+		<Road cost="2" toStop="Hôtel de Ville">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Hôtel de Ville" cost="3">
+		<Road cost="2" toStop="Cordeliers">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+		<Road cost="1" toStop="Foch">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Foch" cost="1">
+		<Road cost="1" toStop="Hôtel de Ville">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+		<Road cost="1" toStop="Masséna">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+	</Stop>
+	
+	<Stop name="Masséna" cost="1">
+		<Road cost="1" toStop="Charpennes Charles Hernu">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+		<Road cost="1" toStop="Foch">
+			<TransportLine type="Underground" name="A" />
+		</Road>
+	</Stop>
+	
+
+</Map>
