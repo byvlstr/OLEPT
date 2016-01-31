@@ -1,6 +1,5 @@
 package exe;
 
-import java.awt.DisplayMode;
 import java.util.Stack;
 
 import domain.Itinerary;
@@ -25,12 +24,14 @@ public class InterfaceInteraction {
 	
 	private static void displayItinerary(Itinerary itinerary){
 		Stack<String> stack = itinerary.getStackStops();
-		System.out.println("####################################");
-		System.out.println("#############Itinerary##############");
+		System.out.println("######################################");
+		System.out.println("############# Itinerary ##############");
 		while(!stack.isEmpty()){
 			System.out.println(stack.pop());
 		}
-		System.out.println("####################################");
+		System.out.println("");
+		System.out.println("Duration : "+itinerary.getDuration() + " minutes");
+		System.out.println("######################################");
 
 	}
 

@@ -55,10 +55,10 @@ public class ItineraryCalculator {
 				
 				for(Road road: minimalCostStop.getRoads()){
 					Stop neighbour = map.getStop(road.getToStop());
-					int alternative = road.getCost() + costToStop.get(minimalCostStop.getName());
-					if(alternative + minimalCostStop.getCost() < costToStop.get(neighbour.getName()) + neighbour.getCost()){
+					int alternative = road.getCost() + costToStop.get(minStop);
+					if(alternative + minimalCostStop.getCost() < costToStop.get(neighbour.getName())){
 						costToStop.put(neighbour.getName(), alternative);
-						previousStopInPath.put(neighbour.getName(), minimalCostStop.getName());
+						previousStopInPath.put(neighbour.getName(), minStop);
 					}					
 				}
 				
@@ -66,7 +66,7 @@ public class ItineraryCalculator {
 				throw new Exception("Stop list may be wrong...");
 			}
 		}
-		Itinerary shortestPath = getShortestPath(goal);
+		Itinerary shortestPath = getShortestPath(goal, map);
 
 		return shortestPath;
 	}
@@ -76,20 +76,18 @@ public class ItineraryCalculator {
 	 * @param goal
 	 * @return
 	 */
-	private Itinerary getShortestPath(String goal) {
+	private Itinerary getShortestPath(String goal, Map map) {
 		Stack<String> stack = new Stack<String>();
 		String stop = goal;
-		System.out.println(previousStopInPath.size());
-		for(String string : previousStopInPath.keySet()){
-			System.out.println(string + " : " + previousStopInPath.get(string));
-		}
+		int duration = costToStop.get(goal);
 		while(previousStopInPath.get(stop) != null){
-			//System.out.println(stop);
 			stack.push(stop);
+			Stop thisStop = map.getStop(stop);
+			duration += thisStop.getCost();
 			stop = previousStopInPath.get(stop);
 		}
 		stack.push(stop);
-		Itinerary itinerary = new Itinerary(stack);
+		Itinerary itinerary = new Itinerary(stack, duration);
 		return itinerary;
 	}
 

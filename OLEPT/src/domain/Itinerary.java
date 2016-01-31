@@ -4,11 +4,13 @@ import java.util.Stack;
 
 public class Itinerary {
 	
-	Stack<String> stackStops;
+	private Stack<String> stackStops;
+	private int duration ;
 
-	public Itinerary(Stack<String> stackStops) {
+	public Itinerary(Stack<String> stackStops, int duration) {
 		super();
 		this.stackStops = stackStops;
+		this.duration = duration;
 	}
 
 	public Stack<String> getStackStops() {
@@ -19,6 +21,13 @@ public class Itinerary {
 		this.stackStops = stackStops;
 	}
 	
-	
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
 
 }
